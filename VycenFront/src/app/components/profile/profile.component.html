@@ -1,0 +1,108 @@
+<div *ngIf="isLoading == true">
+    <app-loading-animation></app-loading-animation>
+</div>
+
+<app-navbar></app-navbar>
+
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-secondary shadow rounded overflow-hidden" style="border-radius: 7px !important; ">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head d-flex">
+                    <div class="profile mr-3">
+                        <img src="../../../assets/img/user.jpg"
+                            alt="Profile Image" width="120" class="m-3 profile-img img-fluid">
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{account.name}} {{account.lastName}}</h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Username: {{account.username}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-dark p-4 d-flex flex-row">
+                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#updateModal"
+                    style="color: #ffffff !important; text-decoration: none; background-color:rgba(44, 129, 186, 0.7); max-height: 70px;">Edit
+                    profile</button>
+                <div class="justify-content-end data">
+                    <ul class="list-inline mb-0 justify-content-end text-center">
+                        <li class="list-inline-item text-center me-3">
+                            <h5 class="font-weight-bold mb-0 d-block">{{account.role}}</h5><small class="text-muted"> <i
+                                    class="fas fa-image mr-1"></i>Role</small>
+                        </li>
+                        <li class="list-inline-item text-center ms-2">
+                            <h5 class="font-weight-bold mb-0 d-block">{{account.phone}}</h5><small class="text-muted">
+                                <i class="fas fa-user mr-1"></i>Phone</small>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="px-4 py-3 mt-2 mb-2">
+                <h5 class="mb-0 mt-2">Info</h5>
+                <div class="p-4 rounded mt-0">
+                    <div class="d-flex">
+                        <p class="font-italic mb-0">Email: {{account.email}}</p>
+                        <span *ngIf="!account.email" style="font-size: 14px;">You have'nt an email.</span>
+                    </div>
+                    <div class="d-flex">
+                        <p class="font-italic mb-0">Country: {{account.country}}</p>
+                        <span *ngIf="!account.country" style="font-size: 14px;">You have'nt a country.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 mt-2 mb-2">
+                <h5 class="mb-0 mt-2">About you</h5>
+                <div class="p-4 rounded shadow-sm bg-primary mt-4">
+                    <p *ngIf="account.about" class="font-italic mb-2">{{account.about}}</p>
+                    <span *ngIf="!account.about">Tell us about you...</span>
+                </div>
+            </div>
+            <div class="footer m-3 mb-4">
+                <button class="btn-delete ms-2" (click)="deleteAccount()"> Delete Account </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
+
+
+
+<!--Modal update-->
+<div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input [(ngModel)]="account.name" id="name" name="name" placeholder="Name" type="text" class="input m-2"
+                    required="">
+                <input [(ngModel)]="account.lastName" name="lastName" placeholder="Last Name" type="text"
+                    class="input m-2 ms-3" required="">
+                <input [(ngModel)]="account.username" name="username" placeholder="Username" type="text"
+                    class="input m-2" required="">
+                <input [(ngModel)]="account.email" name="email" placeholder="Email" type="text" class="input m-2 ms-3"
+                    required="">
+                <input [(ngModel)]="account.phone" name="phone" placeholder="Phone" type="text" class="input m-2"
+                    required="">
+                <select [(ngModel)]="account.country" name="country" style="max-width: 40%;" placeholder="Country"
+                    type="text" class="input m-2 ms-3" required="">
+                    <option *ngFor="let c of countries" value="{{c.name}}" class="text-dark">{{c.name}}</option>
+                </select>
+                <textarea [(ngModel)]="account.about" style="width: 85%;" name="phone" placeholder="About you" type="text" class="input m-2"
+                    required=""></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="updateAccount()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

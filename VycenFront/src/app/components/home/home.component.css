@@ -1,0 +1,30 @@
+.carousel-item {
+    height: 40rem;
+    background-color: #777;
+    position: relative;
+}
+
+.btnCarousel {
+    background-color: rgba(0, 0, 0, 0.616);
+    border-radius: 95%;
+}
+
+.btnCarousel:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 95%;
+}
+
+/*
+.container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 50px;
+}*/
+
+@media (max-width: 1100px) {
+    .cardsInfo{
+        margin-left: 27px;
+    }
+}

@@ -1,0 +1,85 @@
+<div *ngIf="isLoading == true">
+    <app-loading-animation></app-loading-animation>
+</div>
+<app-navbar></app-navbar>
+<section class="container sproduct my-4 pt-5">
+    <div class="row mt-0" style="margin-bottom: -15px;">
+        <div class="col-lg-5 col-md-12 col-12">
+            <img class="img-fluid ms-3 imageP" style="width: 75%;"
+                src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80">
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-12">
+            <h3 class="py-4">{{productInfo.sex}} | {{productInfo.name}}</h3>
+            <h4 class="py-4">Size: {{productInfo.size}}</h4>
+            <h4 class="mb-5">Company: {{productInfo.company.name}}</h4>
+            <h2>Q.{{productInfo.price}}</h2>
+
+            <div class="mt-5 d-flex">
+                <button class="buttonPlus" (click)="addProduct(productInfo._id)">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                        </svg></span><i></i>
+                </button>
+                <div class="p-3 cartAdd">
+                    <span>Add To Cart</span><i></i>
+                </div>
+                <button class="buttonLess" (click)="quitProduct(productInfo._id)">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-dash" viewBox="0 0 16 16">
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                        </svg></span><i></i>
+                </button>
+            </div>
+
+            <hr class="m-5 ms-0" *ngIf="identity == 'ADMIN'" />
+
+            <div *ngIf="identity == 'ADMIN'" class="mt-5">
+                <button class="buttonPlus me-2" data-bs-toggle="modal" data-bs-target="#updateProduct">
+                    <span>Edit</span><i></i>
+                </button>
+                <button class="ms-2 buttonLess" (click)="deleteProduct(productInfo._id)">
+                    <span>Delete</span><i></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>
+
+<!--Modal update user-->
+<div class="modal fade" id="updateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #addUser="ngForm">
+                <div class="modal-body">
+                    <input [(ngModel)]="productInfo.name" name="name" placeholder="Name" type="text" class="input m-2"
+                        required="">
+                    <input [(ngModel)]="productInfo.size" name="size" placeholder="Size" type="text"
+                        class="input m-2 ms-3" maxlength="1" required="">
+                    <input [(ngModel)]="productInfo.sex" name="sex" placeholder="Sex" type="text" class="input m-2"
+                        required="">
+                    <input [(ngModel)]="productInfo.price" name="price" placeholder="price" type="number"
+                        class="input m-2 ms-3" required="">
+                    <input [(ngModel)]="productInfo.date" name="date" placeholder="Date" type="date" class="input m-2"
+                        required="">
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="updateProduct()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

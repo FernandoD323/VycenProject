@@ -1,0 +1,91 @@
+<div *ngIf="isLoading == true">
+    <app-loading-animation></app-loading-animation>
+</div>
+<app-navbar></app-navbar>
+
+<div class="container-fluid mt-2 ms-2">
+    <div class="text-center m-5" *ngIf="identity == 'ADMIN'">
+        <button class="btnAddProduct" data-bs-toggle="modal" data-bs-target="#addProduct">Add</button>
+    </div>
+
+    <div class="container">
+        <ul class="nav nav-tabs justify-content-center mt-5">
+            <li class="nav-item" style="cursor: pointer;">
+                <a class="nav-link " aria-current="page" (click)="searchC('')">All Products</a>
+            </li>
+            <li class="nav-item" style="cursor: pointer;" *ngFor="let comp of company ">
+                <a class="nav-link " aria-current="page" (click)="searchC(comp._id)">{{comp.name}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="cards-container">
+        <div *ngFor="let p of products | search: searchCompany">
+            <!-- <div class=""[routerLink]="['/seeProducts/'+p._id]"> -->
+            <div class="card">
+                <img src="https://www.kantar.com/latin-america/-/media/project/kantar/latin-america/inspiracion/6-ropa_ok.jpg?h=600&w=900&hash=E7D6506DC20483C8E59FE2BBDE2A2A38"
+                    class="card-img" alt="">
+                <div class="card-texts">
+
+                    <div class="card-button" (click)="addProductCart(p._id)">
+                        <h1 class="card-title">{{p.name}}</h1>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title" [routerLink]="['/seeProducts/'+p._id]">{{p.name}}</h1>
+                    <h2 class="card-owner"> - {{p.company.name}} -</h2>
+                    <p class="card-info"> Size: {{p.size}}</p>
+                    <button class="cta">
+                        <span class="hover-underline-animation" (click)="addProductCart(p._id)"> Buy Now </span>
+                    </button>
+                    <button class="cta more_details" >
+                        <span class="hover-underline-animation" [routerLink]="['/seeProducts/'+p._id]"> ¡Más detalles!</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>
+
+
+    <!--Modal create-->
+    <div class="modal fade" id="addProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Create Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #addProduct="ngForm" class="addProductForm">
+                        <input [(ngModel)]="product.name" name="name" placeholder="Name" type="text"
+                            class="inputAddP input m-2" required="">
+                        <input [(ngModel)]="product.size" name="size" placeholder="Size" type="text"
+                            class="inputAddP input m-2 ms-3" maxlength="1" required="">
+                        <input [(ngModel)]="product.sex" name="sex" placeholder="Sex" type="text"
+                            class="inputAddP input m-2" required="">
+                        <input [(ngModel)]="product.price" name="price" placeholder="price" type="number"
+                            class="inputAddP input m-2 ms-3" required="">
+                        <input [(ngModel)]="product.stock" name="stock" placeholder="stock" type="number"
+                            class="inputAddP input m-2 ms-3" minlength="0" required="">
+                        <select [(ngModel)]="product.company" name="company" style="width: 100%; max-width: 11.5rem;"
+                            placeholder="Company" type="text" class="inputAddP input m-2 ms-3" required="">
+                            <option selected disabled>Company</option>
+                            <option class="text-dark" *ngFor="let c of company" value="{{c._id}}">{{c.name}}</option>
+                        </select>
+                        <input name="date" placeholder="Date" type="date" class="inputAddP input m-2" required="">
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="createProduct(addProduct)">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>

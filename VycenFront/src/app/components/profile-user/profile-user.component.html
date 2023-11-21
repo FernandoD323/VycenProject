@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-secondary shadow rounded overflow-hidden" style="border-radius: 7px !important; ">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head d-flex">
+                    <div class="profile mr-3">
+                        <img src="../../../assets/img/user.jpg"
+                            alt="Profile Image" width="130" class="m-3 profile-img">
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{account.name}} {{account.lastName}}</h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Username: {{account.username}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-dark p-4 d-flex flex-row">
+                <div class="justify-content-end data">
+                    <ul class="list-inline mb-0 justify-content-end text-center">
+                        <li class="list-inline-item text-center me-3">
+                            <h5 class="font-weight-bold mb-0 d-block">{{account.role}}</h5><small class="text-muted"> <i
+                                    class="fas fa-image mr-1"></i>Role</small>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="px-4 py-3 mt-2 mb-2">
+                <h5 class="mb-0 mt-2">Info</h5>
+                <div class="p-4 rounded mt-0">
+                    <div class="d-flex">
+                        <p class="font-italic mb-0">Email: {{account.email}}</p>
+                        <span *ngIf="!account.email" style="font-size: 14px;">No email</span>
+                    </div>
+
+                    <div class="d-flex">
+                        <p class="font-italic mb-0">Country: {{account.country}}</p>
+                        <span *ngIf="!account.country" style="font-size: 14px;">No country</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="px-4 py-3 mt-2 mb-2">
+                <h5 class="mb-0 mt-2">About</h5>
+                <div class="p-4 rounded shadow-sm bg-primary mt-4">
+                    <p *ngIf="account.about" class="font-italic mb-2">{{account.about}}</p>
+                    <span *ngIf="!account.about">The user has no information</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

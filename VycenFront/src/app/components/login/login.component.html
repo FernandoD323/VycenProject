@@ -1,0 +1,72 @@
+<body>
+    <img src="../../../assets/img/Vycen.png" width="25" class="img-fluid ms-2 mt-1" />
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong"
+                        style="border-radius: 1rem; background-color:  rgba(49, 58, 66, 0.7); border-color: transparent;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="text-center">
+                                <h4 class="mt-1 mb-5 pb-1">Have an account?</h4>
+                            </div>
+
+                            <form>
+                                <p>Please login to your account</p>
+
+                                <div class="form__group field">
+                                    <input [(ngModel)]="user.username" name="username" required="" placeholder="Name"
+                                        class="form__field" type="input" autocomplete="off">
+                                    <label class="form__label" for="name" >Username</label>
+                                </div>
+
+                                <div class="form__group field">
+                                    <input [(ngModel)]="user.password" name="password" required="" placeholder="Name"
+                                        class="form__field" type="password" autocomplete="off">
+                                    <label class="form__label" for="name">Password</label>
+                                </div>
+
+                                <div class="buttonLog">
+                                    <button class="cssbuttons-io-button mt-5 mb-4" (click)="login()">
+                                        Login
+                                        <div class="icon">
+                                            <svg height="24" width="24" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+
+
+
+
+                                <div class="d-flex align-items-center justify-content-center pt-4">
+                                    <p class="mb-0 me-2">Don't have an account?</p>
+                                </div>
+
+                            </form>
+
+
+                            <hr class="my-4">
+
+                            <button class="cta">
+                                <span class="hover-underline-animation" routerLink="/register"> Register now! </span>
+                                <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10"
+                                    viewBox="0 0 46 16">
+                                    <path id="Path_10" data-name="Path 10"
+                                        d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                                        transform="translate(30)"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

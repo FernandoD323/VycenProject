@@ -1,0 +1,71 @@
+.gallery{
+    margin: 20px;
+}
+
+.gallery-tittle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.galleryCont{
+    width: 100%;
+    margin: 20px auto;
+    columns: 4;
+    column-gap: 20px;
+}
+
+.galleryCont .img_gallery{
+    width: 100%;
+    margin-bottom: 25px;
+    break-inside: avoid;
+}
+
+.galleryCont .img_gallery img{
+    max-width: 100%;
+   border-radius: 15px;
+}
+
+.btnAddProduct {
+    padding: 0.5em 1.1em;
+    border: 2px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #17C3B2;
+}
+
+.btnAddProduct::before {
+    content: '';
+    width: 0;
+    height: 500%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.btnAddProduct:hover::before {
+    width: 105%;
+}
+
+.btnAddProduct:hover {
+    color: #111;
+}
+
+
+.modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}

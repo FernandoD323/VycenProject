@@ -1,0 +1,45 @@
+.body {
+    padding: 0.1px;
+}
+
+.margin {
+    margin: 0% auto;
+    margin-top: 3%;
+    width: 50%;
+}
+
+.card {
+    margin-top: 3rem;
+}
+
+
+.chat-container {
+    height: 650px;
+    overflow: auto;
+    width: 90%;
+}
+
+.close:hover {
+    color: #d63939;
+}
+
+.contend {
+    margin-left: 10%;
+}
+
+.message__text {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin: 5px 90px;
+    max-width: 500px;
+}
+
+.customer.message__text {
+    margin-right: 25%;
+    position: relative;
+}
+
+
+.profile:hover {
+    color: #0c4881;
+}

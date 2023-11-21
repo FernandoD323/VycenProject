@@ -1,0 +1,43 @@
+<div *ngIf="isLoading == true">
+    <app-loading-animation></app-loading-animation>
+</div>
+<app-navbar></app-navbar>
+
+
+
+<div class="contend chat-container">
+    <div class="conteiner" *ngFor="let messa of messages">
+        <div class="customer message__text last text-white mt-4 bg-info">
+            <div class="d-flex" style="font-size: 10px">
+                <svg *ngIf="identity == messa.user._id" (click)="deleteMessages(messa._id)" style="cursor: pointer;"
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-x-lg m-1 close" viewBox="0 0 16 16">
+                    <path
+                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                </svg>
+                <div class="profile mt-1" style="cursor: pointer;" [routerLink]="['/profileUser/'+messa.user._id]">
+                    {{messa.user.name}} {{messa.user.lastName}} ({{messa.user.username}})</div>
+            </div>
+            <hr class="mb-0 mt-0" />
+            {{messa.message}}
+            <div class="col-auto" style="font-size: 8px;">{{messa.date | date: 'short'}}</div>
+        </div>
+    </div>
+</div>
+<hr class="mt-2" />
+<form #addMessageForm="ngForm" class="form">
+    <div class="text">
+        <div class="input-group margin">
+
+            <input [(ngModel)]="saveM.message" name="message" type="text" class="form-control" placeholder="Message"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <button type="button" class="input-group-text" id="basic-addon2"
+                (click)="createMessages(addMessageForm)">Send</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+<app-footer></app-footer>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-1"
+    style="background-color: rgb(61, 71, 78) !important;">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink=""><button data-text="Awesome" class="button ">
+                <span class="actual-text">&nbsp;Vycen&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;Vycen&nbsp;</span>
+            </button></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/forum">Chat
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/gallery">Gallery
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/product">Products</a>
+                </li>
+                <li class="nav-item" *ngIf="role == 'CLIENT'">
+                    <a class="nav-link" routerLink="/shoppingCart"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-cart-fill cart" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" *ngIf="!identity">Login</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="identity">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                            height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/profile">Profile</a>
+                        <a class="dropdown-item" routerLink="/users" *ngIf="role == 'ADMIN'">Users</a>
+                        <a class="dropdown-item" routerLink="/company" *ngIf="role == 'ADMIN'">Companies</a>
+                        <a class="dropdown-item" routerLink="/reports" *ngIf="role == 'ADMIN'">Reports</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="logOut()">Log out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,197 @@
+.box {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
+
+.cards-container {
+    display: flex;
+    gap: 35px 50px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 35px;
+    justify-content: center;
+
+}
+
+
+.card {
+    width: 300px;
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    /* border: 8px solid #fff;*/
+    position: relative;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+.card-body {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    position: absolute;
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    color: #fff;
+    padding: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all .5s ease;
+    gap: 25px;
+
+}
+
+.card-texts {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0%;
+    position: absolute;
+    border-radius: 15px;
+    color: #fff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    transition: 2s;
+
+}
+
+.card:hover .card-body {
+    right: 0;
+}
+
+.card-title {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+.card-owner {
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 300;
+
+}
+
+.card-info {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+.cta {
+    border: none;
+    background: none;
+    font-size: 19px;
+    margin-top: 15px;
+}
+
+
+.hover-underline-animation {
+    position: relative;
+    color: #ffffff;
+    padding-bottom: 20px;
+}
+
+.hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+svg {
+
+    width: 40px;
+
+
+}
+
+
+.btnAddProduct {
+    padding: 0.8em 1.8em;
+    border: 2px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #17C3B2;
+}
+
+.btnAddProduct::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.btnAddProduct:hover::before {
+    width: 105%;
+}
+
+.btnAddProduct:hover {
+    color: #111;
+}
+
+
+.inputAddP{
+    padding: 6px 16px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid #BBB;
+    margin-left: 8px !important;
+}
+
+select {
+    margin-left: 8px !important;
+    max-width: 93% !important;
+}
+.addProductForm{
+    display: grid;
+    grid-template-columns: 48% 48%;
+}
+
+.more_details{
+    margin-top: 60px;
+    font-size: 17px;
+}

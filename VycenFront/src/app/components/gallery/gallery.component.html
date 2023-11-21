@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div class="gallery">
+    <div class="gallery-tittle">
+        <h4>Gallery</h4>
+        <button class="btnAddProduct" class="btnAddProduct" data-bs-toggle="modal" data-bs-target="#addProduct">New Post</button>
+    </div>
+    <hr>
+    <div class="galleryCont">
+        <div class="img_gallery" *ngFor="let imag of imagenes" >
+            <img [src]="'data:image/png;base64,'+imag.imagen" alt="">
+        </div>
+        <div class="img_gallery" *ngIf="imagenesUp" >
+            <img [src]="imagenesUp" alt="">
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
+
+<div class="modal fade" id="addProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">¡Show us your design!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #addProduct="ngForm" class="addProductForm">
+                    <input type="file" (change)="onFileSelected($event)">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>

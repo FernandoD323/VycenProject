@@ -1,0 +1,143 @@
+<div *ngIf="isLoading == true">
+    <app-loading-animation></app-loading-animation>
+</div>
+<app-navbar></app-navbar>
+
+<div class="card m-5">
+    <h4 class="card-header text-center">Users</h4>
+    <div class="card-body m-5 mt-1 table-responsive text-center">
+        <button class="mb-3 mt-2 button1" data-bs-toggle="modal" data-bs-target="#addUser"> Add </button>
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let us of users">
+                    <td>{{us.name}} {{us.lastName}}</td>
+                    <td>{{us.username}}</td>
+                    <td>{{us.country}}</td>
+                    <td>{{us.phone}}</td>
+                    <td>{{us.email}}</td>
+                    <td>{{us.role}}</td>
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            style="cursor: pointer;" class="bi actionBtn editBtn m-2 mb-0 mt-0 bi-pencil-square "
+                            viewBox="0 0 16 16" (click)="getUser(us._id)" data-bs-toggle="modal" data-bs-target="#updateUser">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            style="cursor: pointer;" class="bi actionBtn deleteBtn m-2 mb-0 mt-0 bi-file-earmark-x-fill"
+                            viewBox="0 0 16 16" (click)="deleteUser(us._id)">
+                            <path
+                                d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM6.854 7.146 8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 1 1 .708-.708z" />
+                        </svg>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<!--Modal add user-->
+<div class="modal fade" id="addUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Create User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #addUser="ngForm">
+                <div class="modal-body">
+                    <input [(ngModel)]="user.name" id="name" name="name" placeholder="Name" type="text"
+                        class="input m-2" required="">
+                    <input [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name" type="text"
+                        class="input m-2 ms-3" required="">
+                    <input [(ngModel)]="user.username" name="username" placeholder="Username" type="text"
+                        class="input m-2" required="">
+                    <input [(ngModel)]="user.email" name="email" placeholder="Email" type="text" class="input m-2 ms-3"
+                        required="">
+                    <input [(ngModel)]="user.phone" name="phone" placeholder="Phone" type="text" class="input m-2"
+                        required="">
+                    <select [(ngModel)]="user.country" name="country" style="max-width: 40%;" placeholder="Country"
+                        type="text" class="input m-2 ms-3" required="">
+                        <option selected disabled>Country</option>
+                        <option *ngFor="let c of countries" value="{{c.name}}" class="text-dark">{{c.name}}</option>
+                    </select>
+                    <input [(ngModel)]="user.password" name="password" placeholder="Password" type="password"
+                        class="input m-2" required="">
+                    <select [(ngModel)]="user.role" name="role" style="width: 100%; max-width: 11.5rem;"
+                        placeholder="Role" type="text" class="input m-2 ms-3" required="">
+                        <option selected disabled>Role</option>
+                        <option *ngFor="let roll of role" value="{{roll.value}}" class="text-dark">{{roll.name}}
+                        </option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="createUser(addUser)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal update user-->
+<div class="modal fade" id="updateUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #addUser="ngForm" *ngIf="newUser">
+                <div class="modal-body">
+                    <input [(ngModel)]="newUser.name" id="name" name="name" placeholder="Name" type="text"
+                        class="input m-2" required="">
+                    <input [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name" type="text"
+                        class="input m-2 ms-3" required="">
+                    <input [(ngModel)]="newUser.username" name="username" placeholder="Username" type="text"
+                        class="input m-2" required="">
+                    <input [(ngModel)]="newUser.email" name="email" placeholder="Email" type="text" class="input m-2 ms-3"
+                        required="">
+                    <input [(ngModel)]="newUser.phone" name="phone" placeholder="Phone" type="text" class="input m-2"
+                        required="">
+                    <select [(ngModel)]="newUser.country" name="country" style="max-width: 40%;" placeholder="Country"
+                        type="text" class="input m-2 ms-3" required="">
+                        <option selected disabled>Country</option>
+                        <option *ngFor="let c of countries" value="{{c.name}}" class="text-dark">{{c.name}}</option>
+                    </select>
+                    <select [(ngModel)]="newUser.role" name="role" style="width: 100%; max-width: 11.5rem;"
+                        placeholder="Role" type="text" class="input m-2 ms-3" required="">
+                        <option selected disabled>Role</option>
+                        <option *ngFor="let roll of role" value="{{roll.value}}" class="text-dark">{{roll.name}}
+                        </option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="updateUser()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

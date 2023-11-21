@@ -1,0 +1,85 @@
+<div *ngIf="isLoading == true">
+    <app-loading-animation></app-loading-animation>
+</div>
+<app-navbar></app-navbar>
+<br>
+<hr>
+
+
+<!--Tabla de Contenido-->
+<div class="text-center">
+    <div class="cards mt-5 container">
+        <h4 class="card-header text-center">Shopping Cart</h4>
+        <div class="card-body m-5 mt-1 table-responsive text-center">
+            <button class="mb-3 mt-2 button1" data-bs-toggle="modal" data-bs-target="#payModal"> Pay </button>
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Subtotal</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cart of cartProducts; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{cart.user.name}} {{cart.user.lastName}}</td>
+                        <td>{{cart.product.name}}</td>
+                        <td>Q. {{cart.subtotal}}</td>
+                        <td>{{cart.times}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+
+<!-- Pay Modal-->
+<div class="modal fade" id="payModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Invoice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table" id="invoiceTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of cartProducts; let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{cart.product.name}}</td>
+                            <td>{{cart.product.name}}</td>
+                            <td>{{cart.times}}</td>
+                            <td>Q.{{cart.subtotal}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">TOTAL:</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <th scope="row">Q. {{total}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="payProducts(cartProducts)">Pay</button>
+            </div>
+        </div>
+    </div>
+</div>
