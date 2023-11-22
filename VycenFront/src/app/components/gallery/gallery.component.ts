@@ -9,6 +9,7 @@ import { GalleryService } from 'src/app/services/galleryRest/gallery.service';
 export class GalleryComponent implements OnInit {
   imagenes: any
   imagenesUp:any
+  mostrarImagen: boolean = false;
   
   constructor(
     private galleryRest: GalleryService
@@ -34,9 +35,7 @@ export class GalleryComponent implements OnInit {
       if (selectedFile.type.startsWith('image/')) {
         const reader = new FileReader();
         reader.onloadend = (e: any) => {
-          const preview = e.target.result;
-
-          this.imagenesUp = preview;
+          this.imagenesUp =  e.target.result;
           console.log(this.imagenesUp)
         };
         reader.readAsDataURL(selectedFile);
@@ -45,7 +44,12 @@ export class GalleryComponent implements OnInit {
       }
     }
   }
-  
-  
+
+  onSaveClick() {
+    // Muestra la imagen solo después de hacer clic en el botón Save
+    this.mostrarImagen = true;
+    // Puedes agregar lógica adicional aquí si es necesario
+    console.log("Save button clicked");
+}
 
 }

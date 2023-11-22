@@ -10,7 +10,7 @@
         <div class="img_gallery" *ngFor="let imag of imagenes" >
             <img [src]="'data:image/png;base64,'+imag.imagen" alt="">
         </div>
-        <div class="img_gallery" *ngIf="imagenesUp" >
+        <div class="img_gallery" *ngIf="imagenesUp" [style.display]="mostrarImagen ? 'block' : 'none'" >
             <img [src]="imagenesUp" alt="">
         </div>
     </div>
@@ -29,13 +29,13 @@
             </div>
             <div class="modal-body">
                 <form #addProduct="ngForm" class="addProductForm">
-                    <input type="file" (change)="onFileSelected($event)">
+                    <input type="file" multiple (change)="onFileSelected($event)">
                 </form>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Save</button>
+                <button type="button" class="btn btn-primary" (click)="onSaveClick()" data-bs-dismiss="modal" >Save</button>
             </div>
         </div>
     </div>

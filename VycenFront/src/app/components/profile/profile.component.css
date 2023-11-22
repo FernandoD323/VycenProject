@@ -116,3 +116,9 @@ input:hover {
         margin-left: 250px;
     }
 }
+
+@media screen and (max-width:1024px) {
+    .data {
+        margin-left: 90px;
+    }
+}
