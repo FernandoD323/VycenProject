@@ -16,7 +16,12 @@ export class ReportsComponent implements OnInit {
   reports: any[] = []
   chartColors: any[] = [
     {
-      backgroundColor: ["#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"]
+      backgroundColor: [
+        "#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0",
+        "#FF6347", "#40E0D0", "#FF4500", "#9370DB", "#ADFF2F",
+        "#FF9A8B", "#5899E2", "#C4FFD8", "#FFD6A5", "#FFCCB6",
+        "#FFB6C1", "#8A2BE2", "#7FFFD4", "#FFD700", "#20B2AA",
+      ]
     }];
 
 

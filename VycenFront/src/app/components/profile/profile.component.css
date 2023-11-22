@@ -110,3 +110,9 @@ input:hover {
     opacity: 0;
     transition: opacity .3s;
 }
+
+@media screen and (max-width:1280px) {
+    .data {
+        margin-left: 250px;
+    }
+}
