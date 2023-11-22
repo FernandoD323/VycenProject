@@ -46,7 +46,6 @@ export class GalleryComponent implements OnInit {
     }
 }
 
-
   onSaveClick() {
     this.mostrarImagen = true;
     

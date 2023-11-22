@@ -73,9 +73,13 @@ exports.deleteProduct = async (req, res) => {
     try {
         const productID = req.params.id;
         const product = await Product.findOne({ _id: productID });
+        const reportExist = await Report.findOne({ product: productID })
         if (!product) return res.status(404).send({ message: 'Product not found' });
+        if (!reportExist) return res.status(404).send({ message: 'Report not found' });
         const deleteC = await Product.findOneAndDelete({ _id: productID });
+        const deleteReport = await Report.findOneAndDelete({_id: reportExist._id})
         if (!deleteC) return res.status(500).send({ message: 'Cannot delete this product' });
+        if (!deleteReport) return res.status(500).send({ message: 'Cannot delete this product' });
         return res.send({ message: 'Product deleted' });
     } catch (err) {
         console.log(err);
