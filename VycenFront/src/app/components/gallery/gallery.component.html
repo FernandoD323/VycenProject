@@ -10,8 +10,8 @@
         <div class="img_gallery" *ngFor="let imag of imagenes" >
             <img [src]="'data:image/png;base64,'+imag.imagen" alt="">
         </div>
-        <div class="img_gallery" *ngIf="imagenesUp" [style.display]="mostrarImagen ? 'block' : 'none'" >
-            <img [src]="imagenesUp" alt="">
+        <div class="img_gallery" *ngFor="let imagen of imagenesUp" [style.display]="mostrarImagen ? 'block' : 'none'" > 
+                <img [src]="imagen" alt="Preview">         
         </div>
     </div>
 </div>

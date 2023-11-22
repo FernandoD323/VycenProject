@@ -8,8 +8,9 @@ import { GalleryService } from 'src/app/services/galleryRest/gallery.service';
 })
 export class GalleryComponent implements OnInit {
   imagenes: any
-  imagenesUp:any
+  imagenesUp:any[]=[]
   mostrarImagen: boolean = false;
+  
   
   constructor(
     private galleryRest: GalleryService
@@ -32,24 +33,22 @@ export class GalleryComponent implements OnInit {
     const selectedFile = event.target.files[0];
 
     if (selectedFile) {
-      if (selectedFile.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onloadend = (e: any) => {
-          this.imagenesUp =  e.target.result;
-          console.log(this.imagenesUp)
-        };
-        reader.readAsDataURL(selectedFile);
-
-
-      }
+        if (selectedFile.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onloadend = (e: any) => {
+                this.imagenesUp.push(e.target.result);
+                const fileInput = event.target;
+                fileInput.value = '';
+                console.log("Imágenes cargadas:", this.imagenesUp);
+            };
+            reader.readAsDataURL(selectedFile);
+        }
     }
-  }
-
-  onSaveClick() {
-    // Muestra la imagen solo después de hacer clic en el botón Save
-    this.mostrarImagen = true;
-    // Puedes agregar lógica adicional aquí si es necesario
-    console.log("Save button clicked");
 }
 
+
+  onSaveClick() {
+    this.mostrarImagen = true;
+    
+  }
 }
