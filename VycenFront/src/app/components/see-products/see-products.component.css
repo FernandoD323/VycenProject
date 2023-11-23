@@ -1,4 +1,4 @@
-/* From uiverse.io by @mrhyddenn */
+
 .buttonLess {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -72,7 +72,7 @@
   left: 80%;
 }
 
-/* From uiverse.io by @mrhyddenn */
+
 .buttonPlus {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -172,7 +172,7 @@
 
 }
 
-/* From uiverse.io by @alexruix */
+
 .card {
   width: 190px;
   height: 254px;
@@ -244,10 +244,7 @@ svg {
   background-color: #37FF8B;
 }
 
-/*  --------------------------------------------------------------------------------Switch*/
 
-/* From uiverse.io by @nikk7007 */
-/* The switch - the box around the slider */
 .switch {
   font-size: 17px;
   position: relative;
@@ -256,7 +253,7 @@ svg {
   height: 2em;
 }
 
-/* Hide default HTML checkbox */
+
 .switch input {
   opacity: 0;
   width: 0;
@@ -305,7 +302,7 @@ input:checked+.slider:before {
   transform: translateX(1.5em);
 }
 
-/* From uiverse.io by @nikk7007 */
+
 .buttonA {
   padding: 0.4em 0.8em;
   border: 2px solid #17C3B2;
@@ -344,8 +341,6 @@ input:checked+.slider:before {
 }
 
 
-/* From uiverse.io by @alexruix */
-/* From uiverse.io by @alexruix */
 .input {
   line-height: 28px;
   border: 2px solid transparent;

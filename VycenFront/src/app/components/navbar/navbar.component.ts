@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/userRest/user.service';
 export class NavbarComponent implements OnInit {
   identity:any
   role:any
+  selectedActive: string = ''
 
   constructor(
     private router: Router,
@@ -27,4 +28,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-}
+  
+  }
+
+

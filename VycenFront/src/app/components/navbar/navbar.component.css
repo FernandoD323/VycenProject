@@ -1,5 +1,3 @@
-/* From uiverse.io by @satyamchaudharydev */
-/* === removing default button style ===*/
 
 .btn1 {
   width: 50px;
@@ -46,5 +44,12 @@
 .button:hover .hover-text {
   width: 100%;
   filter: drop-shadow(0 0 23px var(--animation-color))
+}
+
+.active{
+
+  font-weight:bold;
+  font-size: 17px;
+  
 }
 

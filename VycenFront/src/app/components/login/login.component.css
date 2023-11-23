@@ -5,7 +5,7 @@ body {
         background-size: cover;
 }
 
-/* From uiverse.io by @mrhyddenn */
+
 .form__group {
     position: relative;
     padding: 20px 0 0;
@@ -71,7 +71,7 @@ body {
     box-shadow: none;
 }
 
-/* From uiverse.io by @adamgiebl */
+
 .cssbuttons-io-button {
     background: #17C2B1;
     color: white;
@@ -126,7 +126,7 @@ body {
     transform: scale(0.95);
 }
 
-/* From uiverse.io by @alexmaracinaru */
+
 .cta {
     border: none;
     background: none;
