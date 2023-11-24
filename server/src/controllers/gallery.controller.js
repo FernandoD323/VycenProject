@@ -1,7 +1,10 @@
 'use strict'
 const firebase = require('firebase/storage');
+// import { Request, Response } from 'express'
 const fs = require('fs');
 const path = require('path')
+const {Photo} = require('../models/photo');
+
 
 exports.prueba = async (req, res) => {
     console.log('PRUEBA')
@@ -51,7 +54,7 @@ exports.getImages = async (req, res) => {
         }));
 
         res.send({ imagenes: imagenesEnBytes });
-    });
+    });}
     // const storage = firebase.getStorage();
     // const storageRef = firebase.ref(storage);
     // let fileNames = []
@@ -64,4 +67,47 @@ exports.getImages = async (req, res) => {
     // }));
 
     // return res.send({ files: fileNames });
-}
+
+    exports.getPhotos = async(req, res) =>{
+        const photos = await Photo.find();
+        return res.json(photos);
+    };
+    
+    exports.createPhoto = async(req, res) =>{
+        const { title, description,owner,price,sex } = req.body;
+        const newPhoto = { title, description,owner,price,sex,imagePath: req.file.path };
+        const photo = new Photo(newPhoto);
+        await photo.save();
+        return res.json({
+            message: 'Photo Saved Successfully',
+            photo
+        });
+    };
+    
+    exports.getPhoto = async(req, res) =>{
+        const { id } = req.params;
+        const photo = await Photo.findById(id);
+        return res.json(photo);
+    }
+    
+    exports.deletePhoto = async(req, res) =>{
+        const { id } = req.params;
+        const photo = await Photo.findByIdAndRemove(id);
+        if (photo) {
+            await fs.unlink(path.resolve(photo.imagePath));
+        }
+        return res.json({ message: 'Photo Deleted' });
+    };
+    
+    exports.updatePhoto = async(req, res) =>{
+        const { id } = req.params;
+        const { title, description } = req.body;
+        const updatedPhoto = await Photo.findByIdAndUpdate(id, {
+            title,
+            description
+        });
+        return res.json({
+            message: 'Successfully updated',
+            updatedPhoto
+        });
+    }

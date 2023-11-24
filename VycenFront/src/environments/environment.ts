@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3200/'
+  baseUrl: 'http://localhost:3200/',
+  firebaseConfig: {
+    apiKey: "AIzaSyCHVwmCsWJ73C2y5ZraAsfQMVznkHeAaKo",
+    authDomain: "vycen-ef60e.firebaseapp.com",
+    projectId: "vycen-ef60e",
+    storageBucket: "vycen-ef60e.appspot.com",
+    messagingSenderId: "558636262214",
+    appId: "1:558636262214:web:8d8ff2e89fe7138295fb47",
+    measurementId: "G-25JV8FTZX3"
+  },
 };
 
 /*

@@ -25,6 +25,8 @@ import { ChartsModule } from 'ng2-charts';
 import { GalleryComponent } from './components/gallery/gallery.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
